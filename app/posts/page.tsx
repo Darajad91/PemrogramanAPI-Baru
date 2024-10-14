@@ -1,4 +1,4 @@
-import gpuData from "../../public/data/Kartu Grafis Jason.json"; // Sesuaikan dengan path JSON
+import gpuData from "../../public/data/Kartu Grafis Jason.json";
 import CardList from "../components/Posts/CardList";
 import ViewUserButton from "../components/Posts/ViewUserButton";
 
@@ -19,7 +19,7 @@ interface IGPU {
 }
 
 const GPUList = () => {
-  const gpus: IGPU[] = gpuData["Kartu Grafis"]; // Menggunakan notasi bracket
+  const gpus: IGPU[] = gpuData["Kartu Grafis"];
 
   return (
     <>
