@@ -1,44 +1,60 @@
-import gpuData from "../../public/data/Kartu Grafis Jason.json";
+import React from "react";
+import hpData from "../../public/data/HPJason.json";
 import CardList from "../components/Posts/CardList";
 import ViewUserButton from "../components/Posts/ViewUserButton";
 
-interface IGPU {
-  IdGPU: number;
+interface IHP {
+  IdHP: number;
   Nama: string;
-  Chipset: string;
-  Core: number;
-  TMU: number;
-  ROFS: number;
-  VRAM: number;
-  MemoryType: string;
-  BusWidth: number;
-  Vendor: string;
-  GPU: string;
-  Foundry: string;
-  TDP: number;
+  Merek: string;
+  Prosesor: string;
+  RAM: number;
+  Penyimpanan: number;
+  KameraDepan: number;
+  KameraBelakang: number;
+  Baterai: number;
+  Layar: string;
+  Harga: number;
 }
 
-const GPUList = () => {
-  const gpus: IGPU[] = gpuData["Kartu Grafis"];
+const HPList = () => {
+  // Konversi tipe data dari JSON yang diimpor
+  const hps: IHP[] = (hpData as { HP: IHP[] }).HP.map((hp) => ({
+    IdHP: parseInt(hp.IdHP.toString()),
+    Nama: hp.Nama,
+    Merek: hp.Merek,
+    Prosesor: hp.Prosesor,
+    RAM: parseInt(hp.RAM.toString()),
+    Penyimpanan: parseInt(hp.Penyimpanan.toString()),
+    KameraDepan: parseInt(hp.KameraDepan.toString()),
+    KameraBelakang: parseInt(hp.KameraBelakang.toString()),
+    Baterai: parseInt(hp.Baterai.toString()),
+    Layar: hp.Layar,
+    Harga: parseFloat(hp.Harga.toString())
+  }));
 
   return (
     <>
       <p>{new Date().toLocaleTimeString()}</p>
-      <h1 className="text-fuchsia-500">POSTINGAN PAGE</h1>
-      {gpus.map((gpu) => (
-        <CardList key={gpu.IdGPU}>
-          <p>{gpu.Nama}</p>
-          <i>Chipset dan Foundry : {gpu.Chipset} & {gpu.Foundry}</i>
-          <p>Vendor : {gpu.Vendor}</p>
-          <p></p>
-          <p>VRAM: {gpu.VRAM === "0" ? "System Shared" : `${(parseInt(gpu.VRAM) / 1024)} GB`} {gpu.MemoryType}</p>
-          <p>Bus Width: {gpu.BusWidth === "0" ? "Tergantung Channel RAM" : `${gpu.BusWidth} bit`} </p>
-          <p>TDP : {gpu.TDP} W</p>
-          <ViewUserButton userId={gpu.TDP} />
+      <h1 className="text-fuchsia-500">SPESIFIKASI HP</h1>
+      {hps.map((hp) => (
+        <CardList key={hp.IdHP}>
+          <p>{hp.Nama}</p>
+          <i>
+            Merek dan Prosesor: {hp.Merek} & {hp.Prosesor}
+          </i>
+          <p>RAM: {hp.RAM} GB</p>
+          <p>Penyimpanan: {hp.Penyimpanan} GB</p>
+          <p>Kamera Depan: {hp.KameraDepan} MP</p>
+          <p>Kamera Belakang: {hp.KameraBelakang} MP</p>
+          <p>Baterai: {hp.Baterai} mAh</p>
+          <p>Layar: {hp.Layar}</p>
+          <p>Harga: ${hp.Harga}</p>
+          <ViewUserButton userId={hp.IdHP} />
         </CardList>
       ))}
     </>
   );
 };
 
-export default GPUList;
+export default HPList;

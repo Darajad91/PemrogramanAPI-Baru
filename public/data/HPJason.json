@@ -1,0 +1,31 @@
+{
+    "HP": [
+      {
+        "IdHP": 1,
+        "Nama": "Black Shark 5 Pro",
+        "Merek": "Xiaomi",
+        "Prosesor": "Qualcomm Snapdragon 8 Gen 1",
+        "RAM": 12,
+        "Penyimpanan": 256,
+        "KameraDepan": 20,
+        "KameraBelakang": 108,
+        "Baterai": 4650,
+        "Layar": "6.67 inci, 144Hz, AMOLED",
+        "Harga": 999
+      },
+      {
+        "IdHP": 2,
+        "Nama": "ROG Phone 6 Pro",
+        "Merek": "ASUS",
+        "Prosesor": "Qualcomm Snapdragon 8+ Gen 1",
+        "RAM": 18,
+        "Penyimpanan": 512,
+        "KameraDepan": 12,
+        "KameraBelakang": 50,
+        "Baterai": 6000,
+        "Layar": "6.78 inci, 165Hz, AMOLED",
+        "Harga": 1299
+      }
+    ]
+  }
+  
